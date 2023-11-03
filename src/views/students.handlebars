@@ -1,0 +1,67 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="tu_estilo.css" />
+    <title>Estudiantes</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="text-center">Gestión de Estudiantes</h1>
+    </header>
+    <main class="container">
+      <section class="form-container">
+        <h2>Agregar Estudiante</h2>
+        <form
+          action="/api/students"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <input type="text" name="firstName" placeholder="Nombre" required />
+          <input type="text" name="lastName" placeholder="Apellido" required />
+          <input type="number" name="age" placeholder="Edad" required />
+          <input type="email" name="email" placeholder="Correo" required />
+          <input type="text" name="course" placeholder="Curso" required />
+          <input
+            type="number"
+            name="grade"
+            placeholder="Calificación"
+            required
+          />
+          <input type="file" name="avatar" required />
+          <input type="submit" value="Guardar" />
+        </form>
+      </section>
+      <section class="student-list">
+        <h2>Lista de Estudiantes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Edad</th>
+              <th>Correo</th>
+              <th>Curso</th>
+              <th>Calificación</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each students}}
+              <tr>
+                <td>{{this.firstName}}</td>
+                <td>{{this.lastName}}</td>
+                <td>{{this.age}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.course}}</td>
+                <td>{{this.grade}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <footer class="text-center">
+      <p>&copy; 2023 Escuela</p>
+    </footer>
+  </body>
+</html>
